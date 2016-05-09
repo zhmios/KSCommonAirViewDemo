@@ -12,6 +12,7 @@
 @interface KSCommonAirView ()
 
 @property (nonatomic,strong) NSTimer *timer;
+@property (nonatomic,strong) UILabel *contentLabel;
 
 @end
 
@@ -44,8 +45,6 @@
         duration = 2.0;
     }
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(automaticDismiss) userInfo:nil repeats:NO];
-
     CGRect frame = CGRectMake(60, 90, CGRectGetWidth(SCREEN_BOUND) - 60 * 2, 90);
     
     self = [super initWithFrame:frame];
@@ -59,8 +58,23 @@
         self.alpha = 0;
         self.layer.cornerRadius = 5;
         
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(automaticDismiss) userInfo:nil repeats:NO];
+        self.contentLabel = [[UILabel alloc]init];
+        [self addSubview:self.contentLabel];
+        [self.contentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        NSDictionary *views = @{@"contentLabel":self.contentLabel};
+        
+        NSArray *hConstraintsLabel = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[contentLabel]-10-|" options:NSLayoutFormatAlignAllLeading metrics:nil views:views];
+        
+        NSArray *vConstraintsLabel = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[contentLabel]-10-|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:views];
+        [self addConstraints:hConstraintsLabel];
+        [self addConstraints:vConstraintsLabel];
+        
+        self.contentLabel.backgroundColor = [UIColor purpleColor];
+        
     }
-
+    
     return self;
 
 }
