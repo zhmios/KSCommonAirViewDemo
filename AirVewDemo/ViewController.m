@@ -27,7 +27,7 @@
 
 - (IBAction)btnPress:(id)sender {
     
-    KSCommonAirView *airView = [[KSCommonAirView alloc]initWithKeywords:@"月落乌啼霜满天" withDurationTime:2.0];
+    KSCommonAirView *airView = [[KSCommonAirView alloc]initWithKeywords:@"请先选择需要快捷启动的网址或游戏!" withDurationTime:2.0];
     
     [airView showOnParentView:self.view];
     

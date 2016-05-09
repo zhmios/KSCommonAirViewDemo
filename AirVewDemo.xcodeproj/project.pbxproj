@@ -16,6 +16,7 @@
 		C914CAC51CE06CB900991CC2 /* AirVewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C914CAC41CE06CB900991CC2 /* AirVewDemoTests.m */; };
 		C914CAD01CE06CB900991CC2 /* AirVewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C914CACF1CE06CB900991CC2 /* AirVewDemoUITests.m */; };
 		C914CAE21CE0730400991CC2 /* KSCommonAirView.m in Sources */ = {isa = PBXBuildFile; fileRef = C914CAE11CE0730400991CC2 /* KSCommonAirView.m */; };
+		C914CAE51CE09A0500991CC2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C914CAE41CE09A0500991CC2 /* Reveal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		C914CAD11CE06CB900991CC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C914CAE01CE0730400991CC2 /* KSCommonAirView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSCommonAirView.h; sourceTree = "<group>"; };
 		C914CAE11CE0730400991CC2 /* KSCommonAirView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSCommonAirView.m; sourceTree = "<group>"; };
+		C914CAE41CE09A0500991CC2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C914CAE51CE09A0500991CC2 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				C914CAA91CE06CB900991CC2 /* AirVewDemo */,
-				C914CAC31CE06CB900991CC2 /* AirVewDemoTests */,
-				C914CACE1CE06CB900991CC2 /* AirVewDemoUITests */,
 				C914CAA81CE06CB900991CC2 /* Products */,
+				C914CACE1CE06CB900991CC2 /* AirVewDemoUITests */,
+				C914CAC31CE06CB900991CC2 /* AirVewDemoTests */,
+				C914CAE31CE099E100991CC2 /* FrameWorks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,6 +147,14 @@
 				C914CAD11CE06CB900991CC2 /* Info.plist */,
 			);
 			path = AirVewDemoUITests;
+			sourceTree = "<group>";
+		};
+		C914CAE31CE099E100991CC2 /* FrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				C914CAE41CE09A0500991CC2 /* Reveal.framework */,
+			);
+			name = FrameWorks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,8 +433,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AirVewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haiming.AirVewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -432,8 +454,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AirVewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.haiming.AirVewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -504,6 +536,7 @@
 				C914CAD61CE06CB900991CC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C914CAD71CE06CB900991CC2 /* Build configuration list for PBXNativeTarget "AirVewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +545,7 @@
 				C914CAD91CE06CB900991CC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C914CADA1CE06CB900991CC2 /* Build configuration list for PBXNativeTarget "AirVewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +554,7 @@
 				C914CADC1CE06CB900991CC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
