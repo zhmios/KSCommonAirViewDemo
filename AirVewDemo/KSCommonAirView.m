@@ -38,15 +38,17 @@
         
         self.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.75];
         self.layer.shadowRadius = 6.0;
-        self.layer.shadowColor = [UIColor redColor].CGColor;
+        self.layer.shadowColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1].CGColor;
         self.layer.shadowOffset = CGSizeMake(3.0, 3.0);
         self.layer.shadowOpacity = 0.8;
         self.alpha = 0;
         self.layer.cornerRadius = 5;
-        self.maxWith = 260;
+       
         self.timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(automaticDismiss) userInfo:nil repeats:NO];
         self.contentLabel = [[UILabel alloc]init];
         self.contentLabel.font = [UIFont systemFontOfSize:15];
+        self.contentLabel.numberOfLines = 0;
+        self.contentLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.contentLabel];
         [self.contentLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
         self.contentLabel.text = keywords;
@@ -68,6 +70,7 @@
 
 - (CGSize)calculateContentSizeWithContent:(NSString *)contentString{
 
+     self.maxWith = 260;
     
     NSDictionary *attributeDic = @{NSFontAttributeName:[UIFont systemFontOfSize:15]};
     
@@ -85,6 +88,9 @@
     
    
     NSLayoutConstraint *hConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:parentView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    
+    //竖直位置调整
+    
     NSLayoutConstraint *vConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:parentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
     NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:
                                  NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.frame.size.width];
